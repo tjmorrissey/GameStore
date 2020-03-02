@@ -29,7 +29,7 @@ public class UserHelper {
 	}
 	
 	//will return all users from database
-	public List<Games> getUsers() {
+	public List<Games> getAllUsers() {
 		EntityManager em = emfactory.createEntityManager();
 		List<Games> allUsers = em.createQuery("SELECT u FROM User u").getResultList();
 		return allUsers;
