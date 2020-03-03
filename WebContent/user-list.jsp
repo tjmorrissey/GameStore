@@ -8,7 +8,7 @@
 <title>User List</title>
 </head>
 <body>
-<form method = "post" action = "">
+<form method = "post" action = "navigationUserServlet">
 <table>
 <c:forEach items="${requestScope.allUsers}" var="currentuser">
 <tr>
@@ -24,9 +24,9 @@
  </c:forEach>
 </c:forEach>
 </table>
-<input type = "submit" value = "edit" name="doThisToItem">
-<input type = "submit" value = "delete" name="doThisToItem">
-<input type="submit" value = "add" name = "doThisToItem">
+<input type = "submit" value = "edit" name="doThisToGame">
+<input type = "submit" value = "delete" name="doThisToGame">
+<input type="submit" value = "add" name = "doThisToGame">
 </form>
 <br><br><br>
 <a href = "add-game.html">Create New Game</a>
