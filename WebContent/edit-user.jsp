@@ -11,12 +11,13 @@
 <form action = "editUserServlet" method="post">
 <h1> Edit User</h1>
 Username: <input type ="text" name = "username" value= "${userToEdit.username}"> <br>
-Date Created: ${userToEdit.create_date} <br>
-
+<br>
 <input type = "hidden" name = "userId" value="${userToEdit.userId}">
 <input type = "submit" value="Update Username">
 </form>
+
 <br>
+
 <form action="navigateOwnedGames" method="post">
 <table>
 	<tr>

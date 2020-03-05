@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -33,31 +34,32 @@ public class NavigateOwnedGames extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		UserHelper dao = new UserHelper();
+		UserHelper uhdao = new UserHelper();
+		GamesHelper ghdao = new GamesHelper();
+		List<Games> ownedGames;
 		String act = request.getParameter("doThisToGame");
 		
-		System.out.println("In User Edit - Game Edit");
+		//need to reference both the user, and the specific game it owns
+		Integer tempUserId = Integer.parseInt(request.getParameter("userId"));
 		
 		String path = "/viewAllUsersServlet";
 		
 		if (act.equals("Delete Game")) {
 			try {
-				System.out.println("In User Edit - Delete Game");
-				
-				Integer tempUserId = Integer.parseInt(request.getParameter("userId"));
 				Integer tempGameId = Integer.parseInt(request.getParameter("gameId"));
-			
-				User userToDeleteGame = dao.searchForUserById(tempUserId);
-				List<Games> OwnedGames = userToDeleteGame.getGamesOwned();
 				
+				User userToDeleteGame = uhdao.searchForUserById(tempUserId);
+				ownedGames = userToDeleteGame.getGamesOwned();
 				
-				for(Games game: OwnedGames) {
+				//look through game list until if finds game that contains gameId to delete
+				for(Games game: ownedGames) {
 					if(game.getGameId() == tempGameId) {
-						OwnedGames.remove(game);
+						ownedGames.remove(game);
 					}
 				}
 				
-				dao.updateUser(userToDeleteGame);
+				//update user in database with new user info
+				uhdao.updateUser(userToDeleteGame);
 				
 
 			} catch (NumberFormatException e) {
@@ -65,10 +67,53 @@ public class NavigateOwnedGames extends HttpServlet {
 			}
 			
 		} else if (act.equals("Add Game")) {
+			try {
+				//need to reference both the user, and the specific game it owns
+				
+				User userToAddGame = uhdao.searchForUserById(tempUserId);
+				ownedGames = userToAddGame.getGamesOwned();
+				
+				//list with all games available
+				List<Games> allGames = ghdao.showAllGames();
+				
+				//empty list that will fill with games that are in allGames, but not in owned games
+				List<Games> gamesNotOwned = new ArrayList<Games>();
+				
+				
+				for(int j =0; j < allGames.size(); j++) {
+					Games tempAllGames = allGames.get(j);
+					
+					for(int i = 0; i < ownedGames.size(); i++) {
+						Games tempOwned = ownedGames.get(i);
+						
+						if(tempOwned.getGameId() == tempAllGames.getGameId()) {
+							System.out.println("ID Match!");
+							System.out.println(tempOwned);
+						}
+						else
+						{
+							gamesNotOwned.add(tempAllGames);
+						}
+					}
+				}
+				
+				System.out.println("Owned:     " + ownedGames);
+				System.out.println("Not Owned: " + gamesNotOwned);
+				
+				request.setAttribute("userToAddGame", userToAddGame);
+				request.setAttribute("gamesNotOwned", gamesNotOwned);
+			
+				path = "/add-game-to-user.jsp";
+				
+
+			} catch (NumberFormatException e) {
+				System.out.println("Forgot to select an game to delete");
+			}
 			
 
 		}
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
+
 
 }
