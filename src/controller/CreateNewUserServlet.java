@@ -65,7 +65,7 @@ public class CreateNewUserServlet extends HttpServlet {
 		System.out.println("Success!");
 		System.out.println(user.toString());
 		
-		getServletContext().getRequestDispatcher("/viewAllListsServlet").forward(request, response);
+		getServletContext().getRequestDispatcher("/viewAllUsersServlet").forward(request, response);
 	}
 
 	/**

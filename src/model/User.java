@@ -41,7 +41,7 @@ public class User {
 		@JoinTable
 		(
 				//references table that will be the between table in the database
-				name="GAMES_OWNED",
+				name="games_owned",
 				joinColumns= { @JoinColumn(name="USER_ID", referencedColumnName="USER_ID") },
 				inverseJoinColumns= { @JoinColumn(name="GAME_ID", referencedColumnName="GAME_ID", unique=true) }	
 		)

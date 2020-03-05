@@ -12,7 +12,7 @@ import model.User;
 /**
  * Servlet implementation class EditUserServlet
  */
-@WebServlet("/EditUserServlet")
+@WebServlet("/editUserServlet")
 public class EditUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,15 +30,16 @@ public class EditUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserHelper dao = new UserHelper();
 		
-		String username = request.getParameter("store");
-		Integer tempId = Integer.parseInt(request.getParameter("id"));
+		String username = request.getParameter("username");
+		Integer tempId = Integer.parseInt(request.getParameter("userId"));
 				
 		User itemToUpdate = dao.searchForUserById(tempId);
+		
 		itemToUpdate.setUsername(username);
 				
 		dao.updateUser(itemToUpdate);
 
-		getServletContext().getRequestDispatcher("/viewAllItemsServlet").forward(request, response);
+		getServletContext().getRequestDispatcher("/viewAllUsersServlet").forward(request, response);
 	}
 
 }

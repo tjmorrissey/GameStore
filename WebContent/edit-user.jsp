@@ -9,27 +9,35 @@
 </head>
 <body>
 <form action = "editUserServlet" method="post">
-Username: <input type ="text" name = "store" value= "${gameToEdit.username}"> <br>
-Date Created: ${gameToEdit.create_date} <br>
+<h1> Edit User</h1>
+Username: <input type ="text" name = "username" value= "${userToEdit.username}"> <br>
+Date Created: ${userToEdit.create_date} <br>
 
+<input type = "hidden" name = "userId" value="${userToEdit.userId}">
 <input type = "submit" value="Update Username">
 </form>
+<br>
+<form action="navigateOwnedGames" method="post">
 <table>
 	<tr>
 		<td> </td>
 		<td>Game Name</td>
 		<td>Price</td>
 	</tr>
-	<c:forEach var = "gameVal" items = "${currentlist.listOfGames}">
+	<c:forEach var = "gameVal" items = "${userToEdit.gamesOwned}">
  	<tr>
- 		<td><input type="radio" name="id" value="${gameVal.gameId}"> </td>
+ 		<td><input type="radio" name="gameId" value="${gameVal.gameId}"> </td>
  		<td>${gameVal.name } </td>
  		<td>\$${gameVal.price } </td>
 	</tr>
  	</c:forEach>
 </table>
+<input type = "hidden" name = "userId" value="${userToEdit.userId}">
+<input type = "submit" value = "Delete Game" name="doThisToGame">
+<input type="submit" value = "Add Game" name = "doThisToGame">
+</form>
 
-
-<input type = "hidden" name = "id" value="${gameToEdit.id}">
+<br><br>
+<a href = "index.html">Main Menu</a>
 </body>
 </html>

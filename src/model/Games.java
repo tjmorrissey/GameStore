@@ -23,9 +23,9 @@ public class Games {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="GAME_ID")
 	private int gameId;
-	@Column(name="GAME_ID")
+	@Column(name="GAME_NAME")
 	private String name;
-	@Column(name="GAME_ID")
+	@Column(name="GAME_PRICE")
 	private double price;
 	
 	/**

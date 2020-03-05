@@ -8,15 +8,16 @@
 <title>User List</title>
 </head>
 <body>
+<h1>User List</h1>
 <form method = "post" action = "navigationUserServlet">
 <table>
 <c:forEach items="${requestScope.allUsers}" var="currentuser">
 <tr>
- <td><input type="radio" name="id" value="${currentuser.id}"></td>
- <td><h2>${currentlist.username}</h2></td></tr>
- <tr><td colspan="3">Created Date: ${currentlist.tripDate}</td></tr>
- <c:forEach var = "gameVal" items = "${currentlist.listOfGames}">
- <tr><td></td>
+ <td><input type="radio" name="id" value="${currentuser.userId}"></td>
+ <td><h2>${currentuser.username}</h2></td></tr>
+ <tr><td colspan="3">Created Date: ${currentuser.create_date}</td></tr>
+ <c:forEach var = "gameVal" items = "${currentuser.gamesOwned}">
+ <tr>
  <td colspan="3"> 
  ${gameVal.name} | \$${gameVal.price}
  </td>
@@ -24,9 +25,11 @@
  </c:forEach>
 </c:forEach>
 </table>
-<input type = "submit" value = "edit" name="doThisToGame">
-<input type = "submit" value = "delete" name="doThisToGame">
-<input type="submit" value = "add" name = "doThisToGame">
+<br><br>
+Select a User to:
+<input type = "submit" value = "Edit" name="doThisToGame">
+<input type = "submit" value = "Delete" name="doThisToGame">
+<input type="submit" value = "Add" name = "doThisToGame">
 </form>
 <br><br><br>
 <a href = "add-game.html">Create New Game</a>

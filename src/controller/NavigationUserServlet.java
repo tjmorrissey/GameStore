@@ -43,7 +43,7 @@ public class NavigationUserServlet extends HttpServlet {
 		//After changes redirect to ViewAllUsers, unless choose edit, or add
 		String path = "/viewAllUserServlet";
 		
-		if(act.equals("delete")) {
+		if(act.equals("Delete")) {
 			try {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
 				User userToDelete = uh.searchForUserById(tempId);
@@ -54,7 +54,7 @@ public class NavigationUserServlet extends HttpServlet {
 			}
 			
 		}
-		else if(act.equals("edit")) {
+		else if(act.equals("Edit")) {
 			try {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
 				User userToEdit = uh.searchForUserById(tempId);
@@ -66,7 +66,7 @@ public class NavigationUserServlet extends HttpServlet {
 			}
 			
 		}
-		else if(act.equals("add")) {
+		else if(act.equals("Add")) {
 			path = "/addUserWithGamesServlet";
 			
 		}

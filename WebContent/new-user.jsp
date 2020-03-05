@@ -8,8 +8,9 @@
 <title>Add new User</title>
 </head>
 <body>
+<h1>Add New User</h1>
 <form action = "createNewUserServlet" method="post">
-Username: <input type ="text" name = "listName"><br />
+Username: <input type ="text" name = "username"><br />
 <h5>Choose Owned Games:</h5><br>
 Games Items:<br />
 <select name="allGamesToAdd" multiple size="6">
