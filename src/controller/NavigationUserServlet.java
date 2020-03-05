@@ -41,7 +41,7 @@ public class NavigationUserServlet extends HttpServlet {
 		String act = request.getParameter("doThisToGame");
 		
 		//After changes redirect to ViewAllUsers, unless choose edit, or add
-		String path = "/viewAllUserServlet";
+		String path = "/viewAllUsersServlet";
 		
 		if(act.equals("Delete")) {
 			try {
