@@ -38,7 +38,7 @@ public class GamesHelper {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		TypedQuery<Games> typedQuery = em.createQuery(
-				"select ga from Games ga where ga.name = :selectedName",
+				"select ga from Games ga where ga.name = :selectedGame",
 				Games.class);
 		// Substitute parameter with actual data from the toDelete item
 		typedQuery.setParameter("selectedGame", toDelete.getName());

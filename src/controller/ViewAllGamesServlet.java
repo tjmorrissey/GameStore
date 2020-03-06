@@ -34,7 +34,7 @@ public class ViewAllGamesServlet extends HttpServlet {
 		GamesHelper gh = new GamesHelper();
 		List<Games> abc = gh.showAllGames();
 		
-		String path = "/game-list.jsp";
+		String path = "/games-list.jsp";
 		
 		request.setAttribute("allGames", abc);
 		
