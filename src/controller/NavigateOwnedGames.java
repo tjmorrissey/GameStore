@@ -49,14 +49,27 @@ public class NavigateOwnedGames extends HttpServlet {
 				Integer tempGameId = Integer.parseInt(request.getParameter("gameId"));
 				
 				User userToDeleteGame = uhdao.searchForUserById(tempUserId);
+				
 				ownedGames = userToDeleteGame.getGamesOwned();
 				
-				//look through game list until if finds game that contains gameId to delete
-				for(Games game: ownedGames) {
-					if(game.getGameId() == tempGameId) {
-						ownedGames.remove(game);
+				Games gameToDelete = ghdao.searchForGameById(tempGameId);
+				
+				System.out.println(gameToDelete);
+				System.out.println(ownedGames);
+				
+				int gameToDeleteId = -1;
+				
+				for(int i = 0; i < ownedGames.size(); i++) {
+					if(ownedGames.get(i).getGameId() == tempGameId) {
+						gameToDeleteId = i;
 					}
 				}
+				if(gameToDeleteId != -1) {
+					ownedGames.remove(gameToDeleteId);
+				}
+				
+				
+				System.out.println("After " + ownedGames);
 				
 				//update user in database with new user info
 				uhdao.updateUser(userToDeleteGame);
