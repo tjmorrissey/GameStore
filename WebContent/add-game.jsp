@@ -7,6 +7,11 @@
 <title>Add Game</title>
 </head>
 <body>
-<h1>Add a Game</h1>
+<h2>Add a Game</h2>
+<form action = "addGameServlet" method="post">
+Game Name: <input type ="text" name = "name"> <br>
+Price: <input type="text" name="price"> <br>
+<input type = "submit" value="Add Game">
+</form>
 </body>
 </html>
