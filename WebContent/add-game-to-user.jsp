@@ -18,7 +18,7 @@ Choose Game(s) to Add:<br />
 </c:forEach>
 </select>
 <br />
-<input type = "hidden" name = "userId" value="${userToEdit.userId}">
+<input type = "hidden" name = "userId" value="${userToAddGame.userId}">
 <input type = "submit" value="Add Game(s) to User">
 </form>
 <br><br><br>
