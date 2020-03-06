@@ -32,10 +32,12 @@ public class EditGameServlet extends HttpServlet {
 		GamesHelper dao = new GamesHelper();
 		
 		String name = request.getParameter("name");
+		double price = Double.parseDouble(request.getParameter("price"));
 		Integer tempId = Integer.parseInt(request.getParameter("gameId"));
 				
 		Games gameToUpdate = dao.searchForGameById(tempId);
 		gameToUpdate.setName(name);
+		gameToUpdate.setPrice(price);
 				
 		dao.updateGame(gameToUpdate);
 
