@@ -99,10 +99,6 @@ public class NavigateOwnedGames extends HttpServlet {
 						gamesNotOwned.add(tempAllGames);
 					}
 				}
-
-				
-				System.out.println("Owned:     " + ownedGames);
-				System.out.println("Not Owned: " + gamesNotOwned);
 				
 				request.setAttribute("userToAddGame", userToAddGame);
 				request.setAttribute("gamesNotOwned", gamesNotOwned);
