@@ -73,6 +73,8 @@ public class NavigateOwnedGames extends HttpServlet {
 				User userToAddGame = uhdao.searchForUserById(tempUserId);
 				ownedGames = userToAddGame.getGamesOwned();
 				
+				boolean found = false;
+				
 				//list with all games available
 				List<Games> allGames = ghdao.showAllGames();
 				
@@ -83,19 +85,21 @@ public class NavigateOwnedGames extends HttpServlet {
 				for(int j =0; j < allGames.size(); j++) {
 					Games tempAllGames = allGames.get(j);
 					
+					found = false;
+					
 					for(int i = 0; i < ownedGames.size(); i++) {
 						Games tempOwned = ownedGames.get(i);
 						
 						if(tempOwned.getGameId() == tempAllGames.getGameId()) {
-							System.out.println("ID Match!");
-							System.out.println(tempOwned);
+							found = true;
 						}
-						else
-						{
-							gamesNotOwned.add(tempAllGames);
-						}
+
+					}
+					if(!found) {
+						gamesNotOwned.add(tempAllGames);
 					}
 				}
+
 				
 				System.out.println("Owned:     " + ownedGames);
 				System.out.println("Not Owned: " + gamesNotOwned);

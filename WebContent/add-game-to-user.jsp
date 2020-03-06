@@ -24,6 +24,8 @@ Choose Game(s) to Add:<br />
 <br><br><br>
 <a href = "add-game.html">Create New Game</a>
 <br>
+<a href = "viewAllUsersServlet">View All Users</a>
+<br>
 <a href = "index.html">Main Menu</a>
 </body>
 </html>
