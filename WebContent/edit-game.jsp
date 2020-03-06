@@ -11,6 +11,7 @@
 <h3>Edit Game</h3>
 <form action = "editGameServlet" method="post">
 Game Name: <input type ="text" name = "name" value= "${gameToEdit.name}">
+Game Price: <input type ="text" name = "price" value= "${gameToEdit.price}">
 <input type = "hidden" name = "gameId" value="${gameToEdit.gameId}">
 <input type = "submit" value="Save Edited Item">
 <br>
