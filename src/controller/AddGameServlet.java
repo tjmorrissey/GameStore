@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Games;
+
 /**
  * Servlet implementation class addGameServlet
  */
@@ -36,6 +38,19 @@ public class AddGameServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+
+			String name = request.getParameter("name");
+			String priceString = request.getParameter("price");
+			if (name.isEmpty() || priceString.isEmpty() || name == null || priceString == null) {
+				getServletContext().getRequestDispatcher("/add-game.jsp").forward(request, response);
+			} else {
+				double price = Double.parseDouble(priceString);
+				Games game = new Games(name, price);
+				GamesHelper gh = new GamesHelper();
+				gh.insertGame(game);
+
+				getServletContext().getRequestDispatcher("/viewAllGamesServlet").forward(request, response);
+			}
 	}
 
 }
