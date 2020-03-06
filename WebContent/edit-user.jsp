@@ -39,6 +39,8 @@ Username: <input type ="text" name = "username" value= "${userToEdit.username}">
 </form>
 
 <br><br>
+<a href = "viewAllUsersServlet">View All Users</a>
+<br>
 <a href = "index.html">Main Menu</a>
 </body>
 </html>

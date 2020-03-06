@@ -7,7 +7,7 @@ public class TestProgram {
 
 	public static void main(String[] args) {
 		
-		Games game1 = new Games("Destiny 2", 29.99);
+		Games game1 = new Games("Call Of Duty", 52.99);
 		
 		GamesHelper gh= new GamesHelper();
 		
