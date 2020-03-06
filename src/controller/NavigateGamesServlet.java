@@ -60,8 +60,8 @@ public class NavigateGamesServlet extends HttpServlet {
 			}
 			
 		}
-		else if(act.equals("Add Games(s)")) {
-			path = "/addGameServlet";
+		else if(act.equals("Add Game(s)")) {
+			path = "/add-game.jsp";
 			
 		}
 		

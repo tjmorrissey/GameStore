@@ -30,7 +30,6 @@
 <input type = "submit" value="Delete" name="doThisToGame">
 </form>
 <br><br><br>
-<a href = "add-game.html">Create New Game</a>
 <br>
 <a href = "index.html">Main Menu</a>
 <br>

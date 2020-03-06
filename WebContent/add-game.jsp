@@ -13,5 +13,7 @@ Game Name: <input type ="text" name = "name"> <br>
 Price: <input type="text" name="price"> <br>
 <input type = "submit" value="Add Game">
 </form>
+<br>
+<a href="index.html">Main Menu</a>
 </body>
 </html>
