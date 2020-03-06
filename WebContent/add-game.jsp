@@ -7,6 +7,6 @@
 <title>Add Game</title>
 </head>
 <body>
-
+<h1>Add a Game</h1>
 </body>
 </html>
