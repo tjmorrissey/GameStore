@@ -6,9 +6,22 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Edit User</title>
+<script type = "text/javascript">
+//Username Validation, only allow letters and numbers and 3-15 length
+function validate() {
+	var user = document.userForm.username.value;
+	var userLength = user.length;
+	
+	if (userLength <= 3 || userLength >= 15) {
+		alert("Username must be between 3 and 15 characters.")
+		document.userForm.username.focus();
+		return false;
+	}
+}
+</script>
 </head>
 <body>
-<form action = "editUserServlet" method="post">
+<form action = "editUserServlet" name="userForm" method="post" onsubmit="return(validate());">
 <h1> Edit User</h1>
 Username: <input type ="text" name = "username" value= "${userToEdit.username}"> <br>
 <br>

@@ -6,10 +6,23 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add new User</title>
+<script type = "text/javascript">
+//Username Validation, only allow letters and numbers and 3-15 length
+function validate() {
+	var user = document.userForm.username.value;
+	var userLength = user.length;
+	
+	if (userLength <= 3 || userLength >= 15) {
+		alert("Username must be between 3 and 15 characters.")
+		document.userForm.username.focus();
+		return false;
+	}
+}
+</script>
 </head>
 <body>
 <h1>Add New User</h1>
-<form action = "createNewUserServlet" method="post">
+<form action = "createNewUserServlet" name="userForm" method="post" onsubmit="return(validate());">
 Username: <input type ="text" name = "username"><br />
 <h5>Choose Owned Games:</h5><br>
 Games Items:<br />
